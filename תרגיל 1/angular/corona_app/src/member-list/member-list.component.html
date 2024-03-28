@@ -1,0 +1,16 @@
+<input type="text" name="searchName" [(ngModel)]="searchInput" (input)="filterMembers()">
+<div *ngFor="let member of filterArray" style="border: 5px solid black">
+    <h1>name:</h1>
+    <h3>{{member.FullName}}</h3>
+    <button (click)="showMemberDetails(member)">show more Details</button>
+</div>
+
+<button (click)="isShowAddMember = true">add new member</button>
+
+@if(isShowDetails){
+<app-member-details [member]="selectedMember"></app-member-details>
+}
+
+@if(isShowAddMember){
+<app-add-member (onAddMemberEvent)="addNewMember($event)"></app-add-member>
+}
